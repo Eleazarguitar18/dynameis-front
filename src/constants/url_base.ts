@@ -1,0 +1,1 @@
+export const url_base='https://dynameis-backend.onrender.com'

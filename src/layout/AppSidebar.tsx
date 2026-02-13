@@ -7,6 +7,7 @@ import {
   CalenderIcon,
   ChevronDownIcon,
   GridIcon,
+  GroupIcon,
   HorizontaLDots,
   ListIcon,
   PageIcon,
@@ -26,6 +27,25 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
+  {
+    icon: <GroupIcon />,
+    name: "Gestion de grupos",
+    path: "/grupos",
+  },
+  {
+    icon: <CalenderIcon />,
+    name: "Actividades",
+    path: "/actividades",
+  },
+  {
+    icon: <PieChartIcon />,
+    name: "Puntuacion",
+    subItems: [
+      { name: "Ranking", path: "/ranking", pro: false },
+      { name: "Historial de Grupos", path: "/historial-grupos", pro: false },
+    ],
+    // path: "/puntuacion",
+  },
   {
     icon: <GridIcon />,
     name: "Dashboard",
@@ -101,14 +121,14 @@ const AppSidebar: React.FC = () => {
     index: number;
   } | null>(null);
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
-    {}
+    {},
   );
   const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   // const isActive = (path: string) => location.pathname === path;
   const isActive = useCallback(
     (path: string) => location.pathname === path,
-    [location.pathname]
+    [location.pathname],
   );
 
   useEffect(() => {
@@ -290,8 +310,8 @@ const AppSidebar: React.FC = () => {
           isExpanded || isMobileOpen
             ? "w-[290px]"
             : isHovered
-            ? "w-[290px]"
-            : "w-[90px]"
+              ? "w-[290px]"
+              : "w-[90px]"
         }
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
         lg:translate-x-0`}
@@ -308,14 +328,14 @@ const AppSidebar: React.FC = () => {
             <>
               <img
                 className="dark:hidden"
-                src="/images/logo/logo.svg"
+                src="/images/logo/logoDynameis.png"
                 alt="Logo"
                 width={150}
                 height={40}
               />
               <img
                 className="hidden dark:block"
-                src="/images/logo/logo-dark.svg"
+                src="/images/logo/logoDynameis.png"
                 alt="Logo"
                 width={150}
                 height={40}
@@ -323,7 +343,7 @@ const AppSidebar: React.FC = () => {
             </>
           ) : (
             <img
-              src="/images/logo/logo-icon.svg"
+              src="/images/logo/logoDynameis.png"
               alt="Logo"
               width={32}
               height={32}
