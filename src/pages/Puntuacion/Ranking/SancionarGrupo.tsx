@@ -169,7 +169,7 @@ export default function SancionarGrupo() {
               setPuntajeNuevo({
                 ...puntajeNuevo,
                 id_actividad: Number(id_actividad),
-                monto: Number(puntos_base),
+                monto: Number(puntos_base)*(-1), // Convertimos a negativo para sanción
               });
             }}
           />
