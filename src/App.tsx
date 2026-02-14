@@ -27,57 +27,63 @@ import PuntuacionMain from "./pages/Puntuacion/Ranking/PuntuacionMain";
 import SancionarGrupo from "./pages/Puntuacion/Ranking/SancionarGrupo";
 import SumarPuntaje from "./pages/Puntuacion/Ranking/SumarPuntaje";
 import { GrupoProvider } from "./context/GrupoContextType";
+import { AuthProvider } from "./context/AuthContext";
 export default function App() {
   return (
-    <GrupoProvider>
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          {/* 1. RUTAS PROTEGIDAS */}
-          <Route element={<ProtectedRoute />}>
-            <Route element={<AppLayout />}>
-              {/* Usamos 'index' solo para la raíz del Dashboard */}
-              <Route path="/dashboard" element={<Home />} />
-              <Route index element={<Navigate to="/dashboard" replace />} />
-              {/* Grupos - Quitamos 'index' donde hay 'path' */}
-              <Route path="/grupos" element={<GrupoMain />} />
-              <Route path="/grupos/nuevo" element={<GrupoCreate />} />
+    <AuthProvider>
+      <GrupoProvider>
+        <Router>
+          <ScrollToTop />
+          <Routes>
+            {/* 1. RUTAS PROTEGIDAS */}
+            <Route element={<ProtectedRoute />}>
+              <Route element={<AppLayout />}>
+                {/* Usamos 'index' solo para la raíz del Dashboard */}
+                <Route path="/dashboard" element={<Home />} />
+                <Route index element={<Navigate to="/dashboard" replace />} />
+                {/* Grupos - Quitamos 'index' donde hay 'path' */}
+                <Route path="/grupos" element={<GrupoMain />} />
+                <Route path="/grupos/nuevo" element={<GrupoCreate />} />
 
-              {/* Actividades */}
-              <Route path="/actividades" element={<ActividadMain />} />
-              <Route path="/actividades/nuevo" element={<ActividadCreate />} />
+                {/* Actividades */}
+                <Route path="/actividades" element={<ActividadMain />} />
+                <Route
+                  path="/actividades/nuevo"
+                  element={<ActividadCreate />}
+                />
 
-              {/* Puntuacion */}
-              <Route path="/ranking" element={<PuntuacionMain />} />
-              <Route path="/sancionar-grupo" element={<SancionarGrupo />} />
-              <Route path="/sumar-puntos" element={<SumarPuntaje />} />
-              <Route path="/historial-grupos" element={<PuntuacionMain />} />
+                {/* Puntuacion */}
+                <Route path="/ranking" element={<PuntuacionMain />} />
+                <Route path="/sancionar-grupo" element={<SancionarGrupo />} />
+                <Route path="/sumar-puntos" element={<SumarPuntaje />} />
+                <Route path="/historial-grupos" element={<PuntuacionMain />} />
 
-              {/* Resto de páginas */}
-              <Route path="/profile" element={<UserProfiles />} />
-              <Route path="/calendar" element={<Calendar />} />
-              <Route path="/blank" element={<Blank />} />
-              <Route path="/form-elements" element={<FormElements />} />
-              <Route path="/basic-tables" element={<BasicTables />} />
-              <Route path="/alerts" element={<Alerts />} />
-              <Route path="/avatars" element={<Avatars />} />
-              <Route path="/badge" element={<Badges />} />
-              <Route path="/buttons" element={<Buttons />} />
-              <Route path="/images" element={<Images />} />
-              <Route path="/videos" element={<Videos />} />
-              <Route path="/line-chart" element={<LineChart />} />
-              <Route path="/bar-chart" element={<BarChart />} />
+                {/* Resto de páginas */}
+                <Route path="/profile" element={<UserProfiles />} />
+                <Route path="/calendar" element={<Calendar />} />
+                <Route path="/blank" element={<Blank />} />
+                <Route path="/form-elements" element={<FormElements />} />
+                <Route path="/basic-tables" element={<BasicTables />} />
+                <Route path="/alerts" element={<Alerts />} />
+                <Route path="/avatars" element={<Avatars />} />
+                <Route path="/badge" element={<Badges />} />
+                <Route path="/buttons" element={<Buttons />} />
+                <Route path="/images" element={<Images />} />
+                <Route path="/videos" element={<Videos />} />
+                <Route path="/line-chart" element={<LineChart />} />
+                <Route path="/bar-chart" element={<BarChart />} />
+              </Route>
             </Route>
-          </Route>
 
-          {/* 2. RUTAS PÚBLICAS */}
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+            {/* 2. RUTAS PÚBLICAS */}
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
 
-          {/* 3. MANEJO DE ERRORES / REDIRECCIÓN */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
-    </GrupoProvider>
+            {/* 3. MANEJO DE ERRORES / REDIRECCIÓN */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </GrupoProvider>
+    </AuthProvider>
   );
 }

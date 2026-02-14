@@ -1,18 +1,20 @@
 import { useState } from "react";
-import { DropdownItem } from "../ui/dropdown/DropdownItem";
-import { Dropdown } from "../ui/dropdown/Dropdown";
-import { Link } from "react-router";
+// import { DropdownItem } from "../ui/dropdown/DropdownItem";
+// import { Dropdown } from "../ui/dropdown/Dropdown";
+// import { Link } from "react-router";
+import { useAuth } from "../../context/AuthContext";
 
 export default function UserDropdown() {
+  const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleDropdown() {
     setIsOpen(!isOpen);
   }
 
-  function closeDropdown() {
-    setIsOpen(false);
-  }
+  // function closeDropdown() {
+  //   setIsOpen(false);
+  // }
   return (
     <div className="relative">
       <button
@@ -20,11 +22,11 @@ export default function UserDropdown() {
         className="flex items-center text-gray-700 dropdown-toggle dark:text-gray-400"
       >
         <span className="mr-3 overflow-hidden rounded-full h-11 w-11">
-          <img src="/images/user/owner.jpg" alt="User" />
+          <img src="/images/user/user_anonimo.jpg" alt="User" />
         </span>
 
-        <span className="block mr-1 font-medium text-theme-sm">Musharof</span>
-        <svg
+        <span className="block mr-1 font-medium text-theme-sm">{user?.name}</span>
+        {/* <svg
           className={`stroke-gray-500 dark:stroke-gray-400 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
@@ -41,10 +43,10 @@ export default function UserDropdown() {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-        </svg>
+        </svg> */}
       </button>
 
-      <Dropdown
+      {/* <Dropdown
         isOpen={isOpen}
         onClose={closeDropdown}
         className="absolute right-0 mt-[17px] flex w-[260px] flex-col rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-gray-dark"
@@ -156,7 +158,7 @@ export default function UserDropdown() {
           </svg>
           Sign out
         </Link>
-      </Dropdown>
+      </Dropdown> */}
     </div>
   );
 }

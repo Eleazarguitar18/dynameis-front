@@ -7,7 +7,10 @@ import Button from "../ui/button/Button";
 import { url_base } from "../../constants/url_base";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { useAuth } from "../../context/AuthContext";
+
 export default function SignInForm() {
+  const { login } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -36,7 +39,7 @@ export default function SignInForm() {
 
       // 2. Guardar el token para futuras peticiones
       localStorage.setItem("token", response.data.access_token);
-
+      login(response.data.user, response.data.access_token, response.data.refresh_token);
       // 3. Redirigir al Home (que según tu App.tsx es el Dashboard)
       navigate("/");
 
@@ -80,7 +83,6 @@ export default function SignInForm() {
               </div> */}
           </div>
           <div>
-            
             <form onSubmit={handleSubmit}>
               <div className="space-y-6">
                 <div>
