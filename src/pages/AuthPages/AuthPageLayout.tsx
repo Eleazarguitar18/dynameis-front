@@ -26,7 +26,7 @@ export default function AuthLayout({
                 />
               </Link>
               <p className="text-center text-gray-400 dark:text-white/60">
-                Sistema de administración para el campamento Achocalla 2026
+                Sistema de administración de puntaje
               </p>
             </div>
           </div>
