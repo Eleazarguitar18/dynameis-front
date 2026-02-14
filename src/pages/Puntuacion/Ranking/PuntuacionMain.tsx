@@ -3,15 +3,14 @@ import ComponentCard from "../../../components/common/ComponentCard";
 import PageMeta from "../../../components/common/PageMeta";
 import axios from "axios";
 import { url_base } from "../../../constants/url_base";
-import { useEffect, useState } from "react";
-import { Grupo } from "../../../components/interfaces/grupo.interface";
+import { useEffect} from "react";
 import { useNavigate } from "react-router";
 import RankingTable from "../../../components/tables/puntuacion/RankingTable";
 import { useGrupos } from "../../../context/GrupoContextType"; // 1. Importa el hook
 export default function PuntuacionMain() {
   const navigate = useNavigate();
   // 1. Estado para almacenar los grupos
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [loading, setLoading] = useState<boolean>(true);
   const { grupos, setGrupos, } = useGrupos();
   useEffect(() => {
     const fetchGrupos = async () => {
@@ -32,7 +31,7 @@ export default function PuntuacionMain() {
         console.error("Error al obtener grupos:", error);
         // Opcional: Si el token expiró (401), podrías redirigir al login
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
 

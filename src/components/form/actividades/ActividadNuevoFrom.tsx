@@ -3,7 +3,7 @@ import axios from "axios";
 import ComponentCard from "../../common/ComponentCard.tsx";
 import Label from "../Label.tsx";
 import Input from "../input/InputField.tsx";
-import Select from "../Select.tsx";
+// import Select from "../Select.tsx";
 import { url_base } from "../../../constants/url_base.ts";
 import { useNavigate } from "react-router";
 export default function ActividadNuevoFrom() {
@@ -14,15 +14,6 @@ export default function ActividadNuevoFrom() {
     puntos_base: 0,
     categoria: "",
   });
-  const options = [
-    { value: "#800020", label: "Guindo" }, // Borgoña/Guindo intenso
-    { value: "#FACC15", label: "Amarillo" }, // Amarillo vibrante (Tailwind Yellow 400)
-    { value: "#0EA5E9", label: "Celeste" }, // Celeste cielo (Tailwind Sky 500)
-    { value: "#22C55E", label: "Verde" }, // Verde bosque (Tailwind Green 500)
-  ];
-  const handleSelectChange = (value: string) => {
-    console.log("Selected value:", value);
-  };
   // 2. Función para enviar al Backend
   const [loading, setLoading] = useState(false);
   const handleSubmit = async () => {

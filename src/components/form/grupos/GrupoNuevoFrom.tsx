@@ -19,9 +19,9 @@ export default function GrupoNuevoFrom() {
     { value: "#0EA5E9", label: "Celeste" }, // Celeste cielo (Tailwind Sky 500)
     { value: "#22C55E", label: "Verde" }, // Verde bosque (Tailwind Green 500)
   ];
-  const handleSelectChange = (value: string) => {
-    console.log("Selected value:", value);
-  };
+  // const handleSelectChange = (value: string) => {
+  //   console.log("Selected value:", value);
+  // };
   // 2. Función para enviar al Backend
   const [loading, setLoading] = useState(false);
   const handleSubmit = async () => {

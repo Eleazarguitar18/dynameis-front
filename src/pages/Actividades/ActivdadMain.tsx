@@ -16,7 +16,7 @@ const nuevaActividad = () => {
   }
   // 1. Estado para almacenar los actividades
   const [actividades, setActividades] = useState<Actividad[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     const fetchActividades = async () => {
       // 1. EXTRAER EL TOKEN:
@@ -52,7 +52,7 @@ const nuevaActividad = () => {
           alert("Ocurrió un error inesperado.");
         }
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
 

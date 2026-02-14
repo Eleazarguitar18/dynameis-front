@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
-import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "../../icons";
+import { EyeCloseIcon, EyeIcon } from "../../icons";
 import Label from "../form/Label";
 import Input from "../form/input/InputField";
 // import Checkbox from "../form/input/Checkbox";
@@ -23,11 +22,11 @@ export default function SignInForm() {
     });
   };
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
+    // setLoading(true);
 
     try {
       console.log(`envio al backend: ${(formData.email, formData.password)}`);
@@ -47,7 +46,7 @@ export default function SignInForm() {
       const message = error.response?.data?.message || "Error al conectar";
       alert(message);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
   // const [isChecked, setIsChecked] = useState(false);

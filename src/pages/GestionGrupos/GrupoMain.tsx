@@ -12,7 +12,7 @@ export default function GrupoMain() {
   const navigate=useNavigate()
   // 1. Estado para almacenar los grupos
   const [grupos, setGrupos] = useState<Grupo[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  // const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     const fetchGrupos = async () => {
       // 1. EXTRAER EL TOKEN:
@@ -32,7 +32,7 @@ export default function GrupoMain() {
         console.error("Error al obtener grupos:", error);
         // Opcional: Si el token expiró (401), podrías redirigir al login
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
 
